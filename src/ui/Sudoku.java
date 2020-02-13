@@ -23,8 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.text.MaskFormatter;
@@ -56,6 +56,7 @@ public class Sudoku extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Sudoku frame = new Sudoku();
@@ -231,7 +232,7 @@ public class Sudoku extends JFrame {
 				grid[row][column].setBorder(new LineBorder(new Color(0, 0, 0)));
 				grid[row][column].setPreferredSize(new Dimension(50, 50));
 				grid[row][column].setFont(new Font("Tahoma", Font.PLAIN, 40));
-				grid[row][column].setHorizontalAlignment(JTextField.CENTER);
+				grid[row][column].setHorizontalAlignment(SwingConstants.CENTER);
 				grid[row][column].setColumns(1);
 				grid[row][column].setText(null);
 				boxPanels[row/3*3 + column/3].add(grid[row][column]);
@@ -254,6 +255,7 @@ public class Sudoku extends JFrame {
 		
 		solveBacktrackingButton = new JButton("Solve with backtracking");
 		solveBacktrackingButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				resultLabel.setText("Result: " + solve("backtracking"));
 		    }
@@ -261,6 +263,7 @@ public class Sudoku extends JFrame {
 		
 		solveExactCoverButton = new JButton("Solve with dancing links");
 		solveExactCoverButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				resultLabel.setText("Result: " + solve("dancinglinks"));
 		    }
@@ -270,6 +273,7 @@ public class Sudoku extends JFrame {
 		
 		clearButton = new JButton("Clear");
 		clearButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				clear();
 		    }
@@ -290,6 +294,7 @@ public class Sudoku extends JFrame {
 		
 		selectTestButton = new JButton("Insert test values");
 		selectTestButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				insertTestValues(testsList.getSelectedIndex());
 		    }
